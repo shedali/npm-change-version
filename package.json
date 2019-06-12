@@ -2,14 +2,60 @@
   "name": "npm-change-version",
   "author": "Franz <shedali@gmail.com>",
   "version": "0.0.1",
-  "main": "./index.js",
+  "main": "./src/index.js",
+  "bin": {
+    "npm-change-version": "src/index.js",
+    "npv": "src/index.js"
+  },
   "dependencies": {
     "@shedali/mdgen": "^0.2.0"
   },
   "devDependencies": {
+    "ava": "^2.0.0",
+    "commitlint": "^8.0.0",
     "dep-list": "^1.1.3",
-    "dependency-lister": "^1.0.3",
+    "eslint": "^5.16.0",
+    "husky": "^2.4.0",
     "inquirer": "^6.3.1",
-    "npm": "^6.9.0"
+    "lint-staged": "^8.2.0",
+    "npm": "^6.9.0",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2"
+  },
+  "ava": {
+    "files": [
+      "src/*.spec.js"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "ava; nyc ava",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook"
+    }
+  },
+  "nyc": {
+    "check-coverage": true,
+    "exclude": "*spec.js",
+    "reporter": [
+      "text-summary",
+      "text-lcov"
+    ],
+    "branches": 60,
+    "functions": 82.35,
+    "statements": 80,
+    "lines": 79.52
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint src/**.js --fix",
+      "prettier src/**.js --write",
+      "git add",
+      "eslint --fix"
+    ]
   }
 }
