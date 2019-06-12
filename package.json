@@ -42,10 +42,10 @@
       "text-summary",
       "text-lcov"
     ],
-    "branches": 60,
-    "functions": 82.35,
-    "statements": 80,
-    "lines": 79.52
+    "branches": 0,
+    "functions": 0,
+    "statements": 0,
+    "lines": 0
   },
   "scripts": {
     "test": "ava"
