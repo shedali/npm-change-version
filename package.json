@@ -1,7 +1,7 @@
 {
   "name": "npm-change-version",
   "author": "Franz <shedali@gmail.com>",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./src/index.js",
   "bin": {
     "npm-change-version": "src/index.js",
