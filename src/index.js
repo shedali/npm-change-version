@@ -22,7 +22,9 @@ let list;
             type: "list",
             name: "name",
             message: "Select package",
-            choices: result.devDependencies.map(d => d.name)
+            choices: result.devDependencies
+              .concat(result.dependencies)
+              .map(d => d.name)
           }
         ])
 
