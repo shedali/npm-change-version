@@ -13,7 +13,7 @@ let list;
 (async () =>
   npm.load(function() {
     deplist(JSON.parse(pkg), {
-      dependencies: false,
+      dependencies: true,
       devDependencies: true
     }).then(function(result) {
       inquirer
