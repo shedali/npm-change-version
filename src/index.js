@@ -1,9 +1,14 @@
+#!/usr/bin/env node
 const npm = require("npm");
-var inquirer = require("inquirer");
-
-// eslint-disable-next-line no-undef
-var pkg = require("fs").readFileSync(__dirname + "/package.json", "utf8");
+const inquirer = require("inquirer");
+const path = require("path");
 const deplist = require("dependency-lister");
+
+const pkg = require("fs").readFileSync(
+  path.join(process.cwd(), "package.json"),
+  "utf8"
+);
+
 let list;
 (async () =>
   npm.load(function() {
@@ -16,7 +21,7 @@ let list;
           {
             type: "list",
             name: "name",
-            message: "What package do you need?",
+            message: "Select package",
             choices: result.devDependencies.map(d => d.name)
           }
         ])
@@ -29,7 +34,7 @@ let list;
                 {
                   type: "list",
                   name: "version",
-                  message: "What size do you need?",
+                  message: "Select version",
                   choices: list
                 }
               ])

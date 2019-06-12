@@ -1,14 +1,14 @@
 {
   "name": "npm-change-version",
   "author": "Franz <shedali@gmail.com>",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "main": "./src/index.js",
   "bin": {
     "npm-change-version": "src/index.js",
     "npv": "src/index.js"
   },
   "dependencies": {
-    "@shedali/mdgen": "^0.2.0"
+    "dependency-lister": "^1.0.3"
   },
   "devDependencies": {
     "ava": "^2.0.0",
